@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>Civic Wordle</title>
+  <link rel="stylesheet" href="style.css" />
+  <script src="https://cdn.jsdelivr.net/npm/canvas-confetti@1.5.1/dist/confetti.browser.min.js"></script>
+</head>
+<body>
+ 
+  <a href="index.html" id="homeBtn">🏠 Home</a>
+  <a href="level-select.html" id="levelBtn">Level Select</a>
+
+
+  <!-- Top-Right Key Button -->
+  <button id="toggleLegendBtn">❔ Key</button>
+
+  <!-- Legend Modal Overlay -->
+  <div id="legendOverlay" class="hidden">
+    <div class="legend-content">
+      <h2>Color Key</h2>
+      <div class="legend-item">
+        <span class="legend-box correct"></span> Correct letter & position
+      </div>
+      <div class="legend-item">
+        <span class="legend-box present"></span> Correct letter, wrong position
+      </div>
+      <div class="legend-item">
+        <span class="legend-box absent"></span> Letter not in word
+      </div>
+    </div>
+  </div>
+
+  <!-- Game Title -->
+  <h1>Civic Wordle</h1>
+
+  <!-- Game Grid -->
+  <div id="game"></div>
+
+  <!-- Keyboard -->
+  <div id="keyboard"></div>
+
+  <!-- Message & Controls -->
+  <p id="message"></p>
+  <button id="restartBtn" style="display:none;" onclick="restartGame()">Restart Game</button>
+
+  <!-- Game Logic -->
+  <script src="script.js"></script>
+
+</body>
+</html>
