@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Settings - Civic Wordle</title>
+  <style>
+    body.dark {
+  background-color: #121212;
+  color: #f0f0f0;
+}
+
+body.dark a.button {
+  background-color: #444;
+}
+
+body.dark a.button:hover {
+  background-color: #222;
+}
+
+    body {
+      font-family: Arial, sans-serif;
+      background-color: #f0f0f0;
+      color: #002868;
+      padding: 40px;
+      text-align: center;
+    }
+    h1 {
+      color: #bf0a30;
+    }
+    .setting {
+      margin: 20px auto;
+      font-size: 1.2em;
+    }
+    label {
+      margin-left: 10px;
+    }
+    a.button {
+      display: inline-block;
+      margin-top: 30px;
+      padding: 10px 20px;
+      background-color: #002868;
+      color: white;
+      text-decoration: none;
+      border-radius: 5px;
+    }
+    a.button:hover {
+      background-color: #001a4d;
+    }
+  </style>
+</head>
+<body>
+  <h1>Settings</h1>
+
+  <div class="setting">
+    <input type="checkbox" id="musicToggle">
+    <label for="musicToggle">Play background music</label>
+  </div>
+
+  <a class="button" href="index.html">← Back to Home</a>
+
+  <audio id="bgMusic" loop>
+    <source src="music.mp3" type="audio/mpeg">
+    Your browser does not support the audio element.
+  </audio>
+
+  <div class="setting">
+    <input type="checkbox" id="darkModeToggle">
+    <label for="darkModeToggle">Enable dark mode</label>
+  </div>  
+
+  <script>
+    const music = document.getElementById("bgMusic");
+    const toggle = document.getElementById("musicToggle");
+    const darkToggle = document.getElementById("darkModeToggle");
+  
+    // Load preferences
+    const musicPref = localStorage.getItem("musicEnabled") === "true";
+    const darkPref = localStorage.getItem("darkMode") === "true";
+  
+    toggle.checked = musicPref;
+    darkToggle.checked = darkPref;
+  
+    if (musicPref) music.play();
+    if (darkPref) document.body.classList.add("dark");
+  
+    toggle.addEventListener("change", () => {
+      localStorage.setItem("musicEnabled", toggle.checked);
+      toggle.checked ? music.play() : music.pause();
+    });
+  
+    darkToggle.addEventListener("change", () => {
+      document.body.classList.toggle("dark", darkToggle.checked);
+      localStorage.setItem("darkMode", darkToggle.checked);
+    });
+  </script>
+  
+</body>
+</html>
