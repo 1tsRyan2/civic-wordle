@@ -4,95 +4,173 @@
   <meta charset="UTF-8">
   <title>Settings - Civic Wordle</title>
   <style>
-    body.dark {
-  background-color: #121212;
-  color: #f0f0f0;
-}
-
-body.dark a.button {
-  background-color: #444;
-}
-
-body.dark a.button:hover {
-  background-color: #222;
-}
-
     body {
       font-family: Arial, sans-serif;
+      margin: 0;
+      padding: 0;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      height: 100vh;
+      transition: background-color 0.3s, color 0.3s;
+    }
+
+    body.light {
       background-color: #f0f0f0;
       color: #002868;
-      padding: 40px;
-      text-align: center;
     }
+
+    body.dark {
+      background-color: #121212;
+      color: #f0f0f0;
+    }
+
     h1 {
       color: #bf0a30;
+      font-size: 2.5em;
+      margin-bottom: 30px;
     }
+
+    .settings-container {
+      display: flex;
+      flex-direction: column;
+      gap: 20px;
+      width: 100%;
+      max-width: 400px;
+      align-items: center;
+    }
+
     .setting {
-      margin: 20px auto;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      width: 100%;
       font-size: 1.2em;
+      background-color: white;
+      padding: 10px 20px;
+      border-radius: 8px;
+      box-shadow: 0 2px 4px rgba(0,0,0,0.1);
     }
+
+    body.dark .setting {
+      background-color: #1e1e1e;
+      color: #f0f0f0;
+    }
+
     label {
       margin-left: 10px;
+      flex: 1;
+      text-align: left;
     }
-    a.button {
-      display: inline-block;
+
+    .button-row {
+      display: flex;
+      gap: 15px;
       margin-top: 30px;
+    }
+
+    a.button {
       padding: 10px 20px;
       background-color: #002868;
       color: white;
       text-decoration: none;
       border-radius: 5px;
     }
+
     a.button:hover {
       background-color: #001a4d;
     }
+
+    .shake-button {
+      margin-top: 10px;
+      padding: 10px 20px;
+      background-color: #444;
+      color: white;
+      border: none;
+      border-radius: 6px;
+      cursor: pointer;
+      font-size: 1em;
+      width: 100%;
+      max-width: 400px;
+    }
+
+    .shake {
+      animation: shake 0.4s;
+    }
+
+    @keyframes shake {
+      0% { transform: translateX(0); }
+      25% { transform: translateX(-5px); }
+      50% { transform: translateX(5px); }
+      75% { transform: translateX(-5px); }
+      100% { transform: translateX(0); }
+    }
   </style>
 </head>
-<body>
+<body class="light">
   <h1>Settings</h1>
 
-  <div class="setting">
-    <input type="checkbox" id="musicToggle">
-    <label for="musicToggle">Play background music</label>
-  </div>
+  <div class="settings-container">
+    <div class="setting">
+      <input type="checkbox" id="musicToggle">
+      <label for="musicToggle">Play background music</label>
+    </div>
 
-  <a class="button" href="index.html">← Back to Home</a>
+    <div class="setting">
+      <input type="checkbox" id="darkModeToggle">
+      <label for="darkModeToggle">Enable dark mode</label>
+    </div>
+
+    <button id="feedbackBtn" class="shake-button">💬 Feedback</button>
+
+    <div class="button-row">
+      <a class="button" href="index.html">← Back to Home</a>
+    </div>
+  </div>
 
   <audio id="bgMusic" loop>
     <source src="music.mp3" type="audio/mpeg">
     Your browser does not support the audio element.
   </audio>
 
-  <div class="setting">
-    <input type="checkbox" id="darkModeToggle">
-    <label for="darkModeToggle">Enable dark mode</label>
-  </div>  
-
   <script>
     const music = document.getElementById("bgMusic");
     const toggle = document.getElementById("musicToggle");
-    const darkToggle = document.getElementById("darkModeToggle");
-  
-    // Load preferences
+
     const musicPref = localStorage.getItem("musicEnabled") === "true";
-    const darkPref = localStorage.getItem("darkMode") === "true";
-  
     toggle.checked = musicPref;
-    darkToggle.checked = darkPref;
-  
     if (musicPref) music.play();
-    if (darkPref) document.body.classList.add("dark");
-  
+
     toggle.addEventListener("change", () => {
-      localStorage.setItem("musicEnabled", toggle.checked);
-      toggle.checked ? music.play() : music.pause();
+      if (toggle.checked) {
+        music.play();
+        localStorage.setItem("musicEnabled", "true");
+      } else {
+        music.pause();
+        localStorage.setItem("musicEnabled", "false");
+      }
     });
-  
+
+    const darkToggle = document.getElementById("darkModeToggle");
+    const body = document.body;
+    const darkPref = localStorage.getItem("darkMode") === "true";
+    darkToggle.checked = darkPref;
+    body.classList.toggle("dark", darkPref);
+    body.classList.toggle("light", !darkPref);
+
     darkToggle.addEventListener("change", () => {
-      document.body.classList.toggle("dark", darkToggle.checked);
-      localStorage.setItem("darkMode", darkToggle.checked);
+      const isDark = darkToggle.checked;
+      localStorage.setItem("darkMode", isDark);
+      body.classList.toggle("dark", isDark);
+      body.classList.toggle("light", !isDark);
+    });
+
+    const feedbackBtn = document.getElementById("feedbackBtn");
+    feedbackBtn.addEventListener("click", () => {
+      feedbackBtn.classList.add("shake");
+      setTimeout(() => feedbackBtn.classList.remove("shake"), 400);
     });
   </script>
-  
 </body>
 </html>
