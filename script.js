@@ -8,7 +8,11 @@ if (localStorage.getItem("darkMode") === "true") {
 const ALL_WORDS = [
   "civic", "voter", "court", "taxes", "judge", "legal", "trust", "unity",
   "freedom", "ballot", "justice", "rights", "policy", "senate", "liberty",
-  "nation", "elect", "amend"
+  "nation", "elect", "amend", "lawyer", "speech", "govern", "charter",
+  "debate", "public", "protest", "citizen", "ruling", "statute",
+  "rules", "voted", "state", "press", "order", "serve", "peace", "laws", "voice", "civil",
+  "policy", "income", "border", "voting", "pledge", "system", "libert", "reform", "leader", "people",
+  "majority", "equality", "campaign", "assembly", "congress", "decision", "amendment", "executive", "immigrant", "jurisdict"
 ];
 
 const DEFINITIONS = {
@@ -29,7 +33,46 @@ const DEFINITIONS = {
   liberty: "The state of being free within society from oppressive restrictions.",
   nation: "A large body of people united by common descent, history, culture, or language.",
   elect: "To choose someone for a position by voting.",
-  amend: "To make changes to a legal document or legislative bill."
+  amend: "To make changes to a legal document or legislative bill.",
+  lawyer: "A person who practices or studies law; an attorney or a counselor.",
+  speech: "The expression of thoughts and feelings by articulate sounds.",
+  govern: "To conduct the policy, actions, and affairs of a state or organization.",
+  charter: "A written grant by a country’s legislative power or ruler.",
+  debate: "A formal discussion on a particular matter in a public meeting.",
+  public: "Concerning the people as a whole.",
+  protest: "A statement or action expressing disapproval or objection.",
+  citizen: "A legally recognized subject or national of a state.",
+  ruling: "An authoritative decision or pronouncement.",
+  statute: "A written law passed by a legislative body.",
+  rules: "Prescribed guidelines for conduct or action.",
+  voted: "Cast a vote in an election.",
+  state: "A nation or territory considered as an organized political community.",
+  press: "The media and news organizations.",
+  order: "An authoritative command or direction.",
+  serve: "To perform duties for others, especially in government.",
+  peace: "Freedom from disturbance; tranquility.",
+  laws: "The system of rules recognized by a country or community.",
+  voice: "The expression of opinion or choice.",
+  civil: "Relating to ordinary citizens and their concerns.",
+  income: "Money received on a regular basis for work or investments.",
+  border: "A line separating two political or geographical areas.",
+  voting: "The act of expressing a choice in an election.",
+  pledge: "A solemn promise or undertaking.",
+  system: "A set of connected things forming a complex whole.",
+  libert: "Variant of liberty, denoting freedom.",
+  reform: "Make changes to improve something.",
+  leader: "A person who leads or commands a group.",
+  people: "Human beings in general or considered collectively.",
+  majority: "The greater number or part.",
+  equality: "The state of being equal, especially in status or rights.",
+  campaign: "An organized effort to achieve a goal, often political.",
+  assembly: "A group of people gathered together for a purpose.",
+  congress: "A national legislative body.",
+  decision: "A conclusion reached after consideration.",
+  amendment: "A change or addition to a legal or statutory document.",
+  executive: "Having the power to put plans or laws into effect.",
+  immigrant: "A person who comes to live permanently in a foreign country.",
+  jurisdict: "The official power to make legal decisions and judgments."
 };
 
 function getLevelFromURL() {
