@@ -1,82 +1,51 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <title>Select Difficulty - Civic Wordle</title>
-  <style>
-    body {
-      font-family: Arial, sans-serif;
-      background: linear-gradient(-45deg, #bf0a30, white, #002868, white);
-      background-size: 400% 400%;
-      animation: gradientMove 20s ease infinite;
-      color: #002868;
-      margin: 0;
-      padding: 0;
-      height: 100vh;
-      display: flex;
-      flex-direction: column;
-      justify-content: center;
-      align-items: center;
-    }
-
-    @keyframes gradientMove {
-      0% { background-position: 0% 50%; }
-      50% { background-position: 100% 50%; }
-      100% { background-position: 0% 50%; }
-    }
-
-    h1 {
-      font-size: 3em;
-      color: #ffffff;
-      text-shadow: 1px 1px 3px rgba(0,0,0,0.3);
-      margin-bottom: 40px;
-    }
-
-    .level-buttons {
-      display: flex;
-      flex-direction: column;
-      gap: 20px;
-      width: 80%;
-      max-width: 400px;
-    }
-
-    .level-button {
-      padding: 20px;
-      background-color: rgba(0, 40, 104, 0.95);
-      color: white;
-      text-align: center;
-      font-size: 1.5em;
-      border-radius: 10px;
-      text-decoration: none;
-      transition: background-color 0.3s ease, transform 0.2s ease;
-    }
-
-    .level-button:hover {
-      background-color: #001a4d;
-      transform: scale(1.02);
-    }
-        @keyframes fadeIn {
-    from { opacity: 0; transform: translateY(20px); }
-    to { opacity: 1; transform: translateY(0); }
-    }
-
-    .level-button {
-    opacity: 0;
-    animation: fadeIn 0.8s ease forwards;
-    }
-
-    .level-button:nth-child(1) { animation-delay: 0.1s; }
-    .level-button:nth-child(2) { animation-delay: 0.3s; }
-    .level-button:nth-child(3) { animation-delay: 0.5s; }
-  </style>
+  <meta charset="UTF-8" />
+  <title>Civic Wordle</title>
+  <link rel="stylesheet" href="style.css" />
+  <script src="https://cdn.jsdelivr.net/npm/canvas-confetti@1.5.1/dist/confetti.browser.min.js"></script>
 </head>
 <body>
-  <h1>Select Difficulty</h1>
-  <div class="level-buttons">
-    <a class="level-button" href="game.html?level=easy">Easy (5-letter words)</a>
-    <a class="level-button" href="game.html?level=medium">Medium (6-letter words)</a>
-    <a class="level-button" href="game.html?level=hard">Hard (7-letter words)</a>
-    <a class="level-button" href="game.html?level=daily">🗓️ Daily Word</a>
+ 
+  <a href="index.html" id="homeBtn">🏠 Home</a>
+  <a href="level-select.html" id="levelBtn">Level Select</a>
+
+
+  <!-- Top-Right Key Button -->
+  <button id="toggleLegendBtn">❔ Key</button>
+
+  <!-- Legend Modal Overlay -->
+  <div id="legendOverlay" class="hidden">
+    <div class="legend-content">
+      <h2>Color Key</h2>
+      <div class="legend-item">
+        <span class="legend-box correct"></span> Correct letter & position
+      </div>
+      <div class="legend-item">
+        <span class="legend-box present"></span> Correct letter, wrong position
+      </div>
+      <div class="legend-item">
+        <span class="legend-box absent"></span> Letter not in word
+      </div>
+    </div>
   </div>
+
+  <!-- Game Title -->
+  <h1>Civic Wordle</h1>
+
+  <!-- Game Grid -->
+  <div id="game"></div>
+
+  <!-- Keyboard -->
+  <div id="keyboard"></div>
+
+  <!-- Message & Controls -->
+  <p id="message"></p>
+  <button id="restartBtn" style="display:none;" onclick="restartGame()">Restart Game</button>
+
+  <!-- Game Logic -->
+  <script src="script.js"></script>
+
 </body>
 </html>
