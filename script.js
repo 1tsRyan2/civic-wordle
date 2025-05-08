@@ -208,11 +208,11 @@ function createKeyboard() {
     ["a", "s", "d", "f", "g", "h", "j", "k", "l"],
     ["Enter", "z", "x", "c", "v", "b", "n", "m", "Backspace"]
   ];
-  
+
   rows.forEach(row => {
     const rowDiv = document.createElement("div");
     rowDiv.classList.add("keyboard-row");
-  
+
     row.forEach(key => {
       const btn = document.createElement("button");
       btn.textContent = key === "Backspace" ? "←" : key;
@@ -221,10 +221,10 @@ function createKeyboard() {
       btn.addEventListener("click", () => handleKey(key));
       rowDiv.appendChild(btn);
     });
-  
+
     keyboard.appendChild(rowDiv);
   });
-}  
+}
 
 function restartGame() {
   location.reload();
@@ -245,6 +245,14 @@ document.addEventListener("DOMContentLoaded", () => {
     if (e.target === legendOverlay) {
       legendOverlay.classList.add("hidden");
     }
+  });
+
+  hintBtn.addEventListener("click", () => {
+    if (hintUsed) return;
+    const definition = DEFINITIONS[WORD] || "Definition not found.";
+    showMessage(`Hint: ${definition}`);
+    hintUsed = true;
+    hintBtn.disabled = true;
   });
 
   if (level === "daily") {
