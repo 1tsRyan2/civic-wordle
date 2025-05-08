@@ -34,17 +34,39 @@ const DEFINITIONS = {
 
 function getLevelFromURL() {
   const params = new URLSearchParams(window.location.search);
-  const level = params.get("level");
-  if (level === "easy") return 5;
-  if (level === "medium") return 6;
-  if (level === "hard") return 7;
-  return 5; // default
+  return params.get("level");
 }
 
-const TARGET_LENGTH = getLevelFromURL();
-const WORD_LIST = ALL_WORDS.filter(word => word.length === TARGET_LENGTH);
-const WORD = WORD_LIST[Math.floor(Math.random() * WORD_LIST.length)].toLowerCase();
-const WORD_LENGTH = WORD.length;
+function getWordListForLength(length) {
+  return ALL_WORDS.filter(word => word.length === length);
+}
+
+function getDailyWord() {
+  const allWords = [...ALL_WORDS].sort();
+  const startDate = new Date("2025-01-01");
+  const today = new Date();
+  const daysSinceStart = Math.floor((today - startDate) / (1000 * 60 * 60 * 24));
+  const index = daysSinceStart % allWords.length;
+  return allWords[index].toLowerCase();
+}
+
+const level = getLevelFromURL();
+
+let WORD = "";
+let WORD_LIST = [];
+let WORD_LENGTH = 5;
+
+if (level === "daily") {
+  WORD = getDailyWord();
+  WORD_LENGTH = WORD.length;
+  WORD_LIST = [WORD];
+} else {
+  const targetLength = level === "medium" ? 6 : level === "hard" ? 7 : 5;
+  WORD_LIST = getWordListForLength(targetLength);
+  WORD = WORD_LIST[Math.floor(Math.random() * WORD_LIST.length)].toLowerCase();
+  WORD_LENGTH = WORD.length;
+}
+
 const MAX_GUESSES = 6;
 let currentGuess = "";
 let guesses = [];
@@ -181,30 +203,28 @@ function keydownListener(e) {
 }
 
 function createKeyboard() {
-  const letters = "qwertyuiopasdfghjklzxcvbnm";
-  letters.split("").forEach(letter => {
-    const btn = document.createElement("button");
-    btn.textContent = letter;
-    btn.classList.add("key");
-    btn.setAttribute("data-key", letter);
-    btn.addEventListener("click", () => handleKey(letter));
-    keyboard.appendChild(btn);
+  const rows = [
+    ["q", "w", "e", "r", "t", "y", "u", "i", "o", "p"],
+    ["a", "s", "d", "f", "g", "h", "j", "k", "l"],
+    ["Enter", "z", "x", "c", "v", "b", "n", "m", "Backspace"]
+  ];
+  
+  rows.forEach(row => {
+    const rowDiv = document.createElement("div");
+    rowDiv.classList.add("keyboard-row");
+  
+    row.forEach(key => {
+      const btn = document.createElement("button");
+      btn.textContent = key === "Backspace" ? "←" : key;
+      btn.classList.add("key");
+      btn.setAttribute("data-key", key);
+      btn.addEventListener("click", () => handleKey(key));
+      rowDiv.appendChild(btn);
+    });
+  
+    keyboard.appendChild(rowDiv);
   });
-
-  const enter = document.createElement("button");
-  enter.textContent = "Enter";
-  enter.classList.add("key");
-  enter.setAttribute("data-key", "Enter");
-  enter.addEventListener("click", () => handleKey("Enter"));
-  keyboard.appendChild(enter);
-
-  const back = document.createElement("button");
-  back.textContent = "←";
-  back.classList.add("key");
-  back.setAttribute("data-key", "Backspace");
-  back.addEventListener("click", () => handleKey("Backspace"));
-  keyboard.appendChild(back);
-}
+}  
 
 function restartGame() {
   location.reload();
@@ -226,6 +246,14 @@ document.addEventListener("DOMContentLoaded", () => {
       legendOverlay.classList.add("hidden");
     }
   });
+
+  if (level === "daily") {
+    const label = document.createElement("p");
+    label.textContent = "🗓️ Daily Word Challenge";
+    label.style.fontWeight = "bold";
+    label.style.marginTop = "10px";
+    message.before(label);
+  }
 
   createGrid();
   createKeyboard();
