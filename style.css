@@ -246,26 +246,29 @@ h1 {
   }
 
   #homeBtn,
-  #levelBtn {
-    font-size: 0.8em;
-    padding: 6px 10px;
-    width: 100px;
-  }
+#levelBtn {
+  font-size: 0.85em;
+  padding: 8px 12px;
+  width: 120px;
+  left: 10px;
+}
 
-  #homeBtn {
-    top: 10px;
-    left: 10px;
-  }
+#homeBtn {
+  top: 10px;
+}
 
-  #levelBtn {
-    top: 50px;
-    left: 10px;
-  }
+#levelBtn {
+  top: 60px; /* Creates clean vertical spacing */
+}
 
-  #toggleLegendBtn {
-    top: 10px;
-    right: 10px;
-    font-size: 0.8em;
-    padding: 6px 10px;
-  }
+h1 {
+  margin-top: 120px; /* Pushes title down so it's not overlapped */
+}
+
+#toggleLegendBtn {
+  top: 10px;
+  right: 10px;
+  font-size: 0.85em;
+  padding: 8px 12px;
+}
 }
