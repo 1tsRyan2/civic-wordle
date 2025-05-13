@@ -307,38 +307,34 @@ body.dark #levelBtn:hover {
 }
 
 @media (max-width: 600px) {
-  body {
-    padding: 10px;
-  }
-
   h1 {
-    font-size: 2em;
-    margin-top: 10px;
+    font-size: 2.2em;
+    margin-top: 20px;
   }
 
   #game {
-    grid-gap: 5px;
-    margin-top: 10px;
-    margin-bottom: 10px;
+    grid-gap: 6px;
+    margin-top: 15px;
+    margin-bottom: 15px;
   }
 
   .tile {
-    width: 45px;
-    height: 45px;
-    font-size: 1.5em;
-    line-height: 45px;
+    width: 50px;
+    height: 50px;
+    font-size: 1.75em;
+    line-height: 50px;
   }
 
   .key {
-    padding: 12px;
-    font-size: 1.1em;
-    min-width: 40px;
+    padding: 10px 12px;
+    font-size: 1em;
+    min-width: 38px;
   }
 
   .key[data-key="Enter"],
   .key[data-key="Backspace"] {
-    flex: 2;
-    min-width: 70px;
+    flex: 1.8;
+    min-width: 60px;
   }
 
   #restartBtn,
@@ -346,18 +342,17 @@ body.dark #levelBtn:hover {
   #toggleLegendBtn,
   #homeBtn,
   #levelBtn {
-    font-size: 1em;
-    padding: 12px 16px;
+    font-size: 0.95em;
+    padding: 10px 14px;
   }
 
   .legend-content {
-    padding: 15px 20px;
-    font-size: 0.9em;
+    padding: 16px 22px;
+    font-size: 0.95em;
   }
 
   .legend-box {
-    width: 1.2em;
-    height: 1.2em;
+    width: 1.3em;
+    height: 1.3em;
   }
 }
-
