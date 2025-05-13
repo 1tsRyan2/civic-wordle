@@ -104,11 +104,17 @@ if (level === "daily") {
   WORD_LENGTH = WORD.length;
   WORD_LIST = [WORD];
 } else {
-  const targetLength = level === "medium" ? 6 : level === "hard" ? 7 : 5;
+  const targetLength =
+    level === "medium" ? 6 :
+    level === "hard" ? 7 :
+    level === "expert" ? 8 :
+    level === "impossible" ? 9 : 5;
+
   WORD_LIST = getWordListForLength(targetLength);
   WORD = WORD_LIST[Math.floor(Math.random() * WORD_LIST.length)].toLowerCase();
   WORD_LENGTH = WORD.length;
 }
+
 
 const MAX_GUESSES = 6;
 let currentGuess = "";
