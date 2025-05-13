@@ -247,3 +247,10 @@ h1 {
 #toggleLegendBtn:hover {
   background-color: #001a4d;
 }
+body {
+  touch-action: manipulation;
+}
+
+button, .key {
+  touch-action: manipulation;
+}
