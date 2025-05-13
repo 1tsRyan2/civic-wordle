@@ -8,15 +8,20 @@
   <script src="https://cdn.jsdelivr.net/npm/canvas-confetti@1.5.1/dist/confetti.browser.min.js"></script>
 </head>
 <body>
- 
-  <a href="index.html" id="homeBtn">🏠 Home</a>
-  <a href="level-select.html" id="levelBtn">Level Select</a>
+  <h1>Civic Wordle</h1>
 
+  <!-- Game Grid -->
+  <div id="game"></div>
 
-  <!-- Top-Right Key Button -->
-  <button id="toggleLegendBtn">❔ Key</button>
+  <!-- Keyboard -->
+  <div id="keyboard"></div>
 
-  <!-- Legend Modal Overlay -->
+  <!-- Message & Controls -->
+  <p id="message"></p>
+  <button id="restartBtn" style="display:none;" onclick="restartGame()">Restart Game</button>
+  <button id="hintBtn">💡 Hint</button>
+
+  <!-- Legend Modal -->
   <div id="legendOverlay" class="hidden">
     <div class="legend-content">
       <h2>Color Key</h2>
@@ -32,23 +37,6 @@
     </div>
   </div>
 
-  <!-- Game Title -->
-  <h1>Civic Wordle</h1>
-
-  <!-- Game Grid -->
-  <div id="game"></div>
-
-  <!-- Keyboard -->
-  <div id="keyboard"></div>
-
-  <!-- Message & Controls -->
-  <p id="message"></p>
-  <button id="restartBtn" style="display:none;" onclick="restartGame()">Restart Game</button>
-
-  <button id="hintBtn">💡 Hint</button>
-
-  <!-- Game Logic -->
   <script src="script.js"></script>
-
 </body>
 </html>
