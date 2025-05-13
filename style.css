@@ -208,3 +208,42 @@ h1 {
     display: none;
   }
 }
+#homeBtn,
+#levelBtn {
+  position: absolute;
+  left: 15px;
+  background-color: #002868;
+  color: white;
+  text-decoration: none;
+  border-radius: 5px;
+  font-size: 0.9em;
+  padding: 8px 12px;
+  width: 110px;
+  text-align: center;
+  z-index: 1000;
+}
+
+#homeBtn {
+  top: 15px;
+}
+
+#levelBtn {
+  top: 60px;
+}
+#toggleLegendBtn {
+  position: absolute;
+  top: 15px;
+  right: 15px;
+  background-color: #002868;
+  color: white;
+  border: none;
+  padding: 8px 12px;
+  font-size: 0.9em;
+  border-radius: 5px;
+  cursor: pointer;
+  z-index: 1000;
+}
+
+#toggleLegendBtn:hover {
+  background-color: #001a4d;
+}
