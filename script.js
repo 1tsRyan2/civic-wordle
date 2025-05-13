@@ -280,9 +280,12 @@ function restartGame() {
 }
 
 document.addEventListener("DOMContentLoaded", () => {
-  toggleBtn.addEventListener("click", () => {
-    legendOverlay.classList.toggle("hidden");
-  });
+  if (toggleBtn) {
+    toggleBtn.addEventListener("click", () => {
+      legendOverlay.classList.toggle("hidden");
+    });
+  }
+  
 
   document.addEventListener("keydown", (e) => {
     if (e.key === "Escape") {
