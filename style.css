@@ -6,6 +6,7 @@ body {
   margin: 0;
   padding: 10px;
   box-sizing: border-box;
+  touch-action: manipulation;
 }
 
 h1 {
@@ -85,6 +86,7 @@ h1 {
   min-width: 36px;
   height: 50px;
   line-height: 30px;
+  touch-action: manipulation;
 }
 
 .key.correct { background-color: #002868; color: white; }
@@ -110,6 +112,47 @@ h1 {
 
 #restartBtn:hover, #hintBtn:hover {
   background-color: #a30d25;
+}
+
+#homeBtn,
+#levelBtn {
+  position: absolute;
+  left: 15px;
+  background-color: #002868;
+  color: white;
+  text-decoration: none;
+  border-radius: 5px;
+  font-size: 0.9em;
+  padding: 8px 12px;
+  width: 110px;
+  text-align: center;
+  z-index: 1000;
+}
+
+#homeBtn { top: 15px; }
+#levelBtn { top: 60px; }
+
+#homeBtn:hover,
+#levelBtn:hover {
+  background-color: #001a4d;
+}
+
+#toggleLegendBtn {
+  position: absolute;
+  top: 15px;
+  right: 15px;
+  background-color: #002868;
+  color: white;
+  border: none;
+  padding: 8px 12px;
+  font-size: 0.9em;
+  border-radius: 5px;
+  cursor: pointer;
+  z-index: 1000;
+}
+
+#toggleLegendBtn:hover {
+  background-color: #001a4d;
 }
 
 /* Modal */
@@ -202,55 +245,27 @@ h1 {
     padding: 14px 18px;
   }
 
-  #toggleLegendBtn,
   #homeBtn,
   #levelBtn {
-    display: none;
+    font-size: 0.8em;
+    padding: 6px 10px;
+    width: 100px;
   }
-}
-#homeBtn,
-#levelBtn {
-  position: absolute;
-  left: 15px;
-  background-color: #002868;
-  color: white;
-  text-decoration: none;
-  border-radius: 5px;
-  font-size: 0.9em;
-  padding: 8px 12px;
-  width: 110px;
-  text-align: center;
-  z-index: 1000;
-}
 
-#homeBtn {
-  top: 15px;
-}
+  #homeBtn {
+    top: 10px;
+    left: 10px;
+  }
 
-#levelBtn {
-  top: 60px;
-}
-#toggleLegendBtn {
-  position: absolute;
-  top: 15px;
-  right: 15px;
-  background-color: #002868;
-  color: white;
-  border: none;
-  padding: 8px 12px;
-  font-size: 0.9em;
-  border-radius: 5px;
-  cursor: pointer;
-  z-index: 1000;
-}
+  #levelBtn {
+    top: 50px;
+    left: 10px;
+  }
 
-#toggleLegendBtn:hover {
-  background-color: #001a4d;
-}
-body {
-  touch-action: manipulation;
-}
-
-button, .key {
-  touch-action: manipulation;
+  #toggleLegendBtn {
+    top: 10px;
+    right: 10px;
+    font-size: 0.8em;
+    padding: 6px 10px;
+  }
 }
