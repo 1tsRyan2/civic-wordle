@@ -14,7 +14,7 @@ body {
 h1 {
   font-size: 2.5em;
   color: #bf0a30;
-  margin: 20px 0;
+  margin: 120px 0 20px;
 }
 
 #game {
@@ -66,29 +66,36 @@ h1 {
 #keyboard {
   margin-top: 20px;
   margin-bottom: 15px;
+  max-width: 100%;
+  padding: 0 5px;
+  box-sizing: border-box;
 }
 
 .keyboard-row {
   display: flex;
+  flex-wrap: nowrap;
   justify-content: center;
+  gap: 4px;
   margin: 5px 0;
 }
 
 .key {
-  display: inline-block;
-  margin:1.5px;
-  padding: 10px;
-  background-color: #ffffff;
-  border: 2px solid #002868;
-  color: #002868;
+  flex: 1;
+  padding: 12px 6px;
   font-size: 1em;
-  cursor: pointer;
+  height: auto;
+  line-height: 1.2;
+  border: 2px solid #002868;
+  border-radius: 6px;
+  background-color: #fff;
+  color: #002868;
   text-transform: uppercase;
-  border-radius: 4px;
-  min-width: 36px;
-  height: 50px;
-  line-height: 30px;
   touch-action: manipulation;
+}
+
+.key:not([data-key="Enter"]):not([data-key="Backspace"]) {
+  min-width: 28px;
+  max-width: 36px;
 }
 
 .key.correct { background-color: #002868; color: white; }
@@ -203,16 +210,9 @@ h1 {
 }
 
 @media (max-width: 600px) {
-  .key {
-    font-size: 0.85em;
-    padding: 6px;
-    min-width: 36px;
-    max-width: 34px;
-  }  
-
   h1 {
     font-size: 2em;
-    margin: 10px 0;
+    margin: 120px 0 10px;
   }
 
   #game {
@@ -228,26 +228,17 @@ h1 {
   }
 
   .keyboard-row {
-    display: flex;
-    flex-wrap: nowrap;
-    justify-content: center;
-    gap: 4px;
     margin: 5px 0;
   }
-  
 
   .key {
-    flex: 1;
-    max-width: 36px;
-    min-width: 28px;
-    padding: 8px;
-    font-size: 0.9em;
-  }  
+    padding: 14px 6px;
+    font-size: 1em;
+  }
 
-  .key[data-key="Enter"],
-  .key[data-key="Backspace"] {
-    flex: 1.5;
-    min-width: 60px;
+  .key:not([data-key="Enter"]):not([data-key="Backspace"]) {
+    min-width: 26px;
+    max-width: 34px;
   }
 
   #restartBtn, #hintBtn {
@@ -261,36 +252,26 @@ h1 {
   }
 
   #homeBtn,
-#levelBtn {
-  font-size: 0.85em;
-  padding: 8px 12px;
-  width: 120px;
-  left: 10px;
-}
+  #levelBtn {
+    font-size: 0.8em;
+    padding: 6px 10px;
+    width: 100px;
+  }
 
-#homeBtn {
-  top: 10px;
-}
+  #homeBtn {
+    top: 10px;
+    left: 10px;
+  }
 
-#levelBtn {
-  top: 60px; /* Creates clean vertical spacing */
-}
+  #levelBtn {
+    top: 50px;
+    left: 10px;
+  }
 
-h1 {
-  margin-top: 120px; /* Pushes title down so it's not overlapped */
+  #toggleLegendBtn {
+    top: 10px;
+    right: 10px;
+    font-size: 0.8em;
+    padding: 6px 10px;
+  }
 }
-
-#toggleLegendBtn {
-  top: 10px;
-  right: 10px;
-  font-size: 0.85em;
-  padding: 8px 12px;
-}}
-#keyboard {
-  margin-top: 20px;
-  margin-bottom: 15px;
-  max-width: 100%;
-  padding: 0 5px;
-  box-sizing: border-box;
-}
-
