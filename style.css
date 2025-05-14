@@ -92,6 +92,12 @@ h1 {
   text-transform: uppercase;
   touch-action: manipulation;
 }
+.key[data-key="Enter"],
+.key[data-key="Backspace"] {
+  flex: none;
+  min-width: 60px;
+  max-width: 80px;
+}
 
 .key:not([data-key="Enter"]):not([data-key="Backspace"]) {
   min-width: 28px;
@@ -210,6 +216,13 @@ h1 {
 }
 
 @media (max-width: 600px) {
+
+.key[data-key="Enter"],
+.key[data-key="Backspace"] {
+  min-width: 50px;
+  max-width: 70px;
+}
+
   h1 {
     font-size: 2em;
     margin: 120px 0 10px;
