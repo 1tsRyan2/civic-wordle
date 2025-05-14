@@ -219,15 +219,21 @@ h1 {
   }
 
   .keyboard-row {
+    display: flex;
+    flex-wrap: nowrap;
+    justify-content: center;
+    gap: 4px;
     margin: 5px 0;
   }
+  
 
   .key {
-    padding: 10px;
-    font-size: 1em;
-    min-width: 36px;
-    height: 50px;
-  }
+    flex: 1;
+    max-width: 36px;
+    min-width: 28px;
+    padding: 8px;
+    font-size: 0.9em;
+  }  
 
   .key[data-key="Enter"],
   .key[data-key="Backspace"] {
@@ -270,5 +276,11 @@ h1 {
   right: 10px;
   font-size: 0.85em;
   padding: 8px 12px;
-}
+}}
+#keyboard {
+  margin-top: 20px;
+  margin-bottom: 15px;
+  max-width: 100%;
+  padding: 0 5px;
+  box-sizing: border-box;
 }
