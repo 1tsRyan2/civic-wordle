@@ -200,7 +200,7 @@ h1 {
   display: none !important;
 }
 
-@media (max-width: 600px) {
+@media (max-width: 500px) {
   h1 {
     font-size: 2em;
     margin: 10px 0;
